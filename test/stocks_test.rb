@@ -17,14 +17,14 @@ class TestSimpleNumber < Test::Unit::TestCase
 
     aapl = Stocks.get_quotes(["AAPL"])
     assert_equal(1, aapl.size)
-    assert_equal(3, aapl[0].size)
-    assert_equal("Apple Inc.", aapl[0][0])
+    assert_equal(4, aapl[0].size)
+    assert_equal("AAPL", aapl[0][0])
 
     aapl = Stocks.get_quotes(["AAPL", "MU"])
     assert_equal(2, aapl.size)
-    assert_equal(3, aapl[0].size)
-    assert_equal("Apple Inc.", aapl[0][0])
-    assert_equal(3, aapl[1].size)
-    assert_equal("Micron Technology, Inc.", aapl[1][0])
+    assert_equal(4, aapl[0].size)
+    assert_equal("AAPL", aapl[0][0])
+    assert_equal(4, aapl[1].size)
+    assert_equal("MU", aapl[1][0])
   end
 end

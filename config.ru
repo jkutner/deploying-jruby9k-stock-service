@@ -5,9 +5,10 @@ require 'lib/stocks'
 
 class App < Sinatra::Base
   post '/quotes' do
-    content_type :json
-    stocks = Stocks.parse_for_stocks(request.body.read.to_s)
-    Stocks.get_quotes(stocks).to_json
+    text = request.body.read.to_s
+    stocks = Stocks.parse_for_stocks(text)
+    quotes = Stocks.get_quotes(stocks)
+    Stocks.sub_quotes(text, quotes)
   end
 end
 
