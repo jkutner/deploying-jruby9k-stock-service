@@ -4,7 +4,7 @@ Bundler.require
 require 'lib/stocks'
 
 class App < Sinatra::Base
-  post '/quotes' do
+  post '/stockify' do
     text = request.body.read.to_s
     stocks = Stocks.parse_for_stocks(text)
     quotes = Stocks.get_quotes(stocks)
