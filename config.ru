@@ -9,10 +9,12 @@ class App < Sinatra::Base
     async = env['java.servlet_request'].start_async
 
     Thread.new do
-      stocks = Stocks.parse_for_stocks(request.body.read.to_s)
-      quotes = Stocks.get_quotes(stocks).to_json
+      text = request.body.read.to_s
+      stocks = Stocks.parse_for_stocks(text)
+      quotes = Stocks.get_quotes(stocks)
+      new_text = Stocks.sub_quotes(text, quotes)
 
-      async.response.output_stream.println(quotes.to_json)
+      async.response.output_stream.println(new_text)
       async.complete
     end
   end
