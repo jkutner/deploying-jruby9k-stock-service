@@ -4,7 +4,7 @@ Bundler.require
 require 'lib/stocks'
 
 class App < Sinatra::Base
-  post '/quotes' do
+  post '/stockify' do
     response.headers["Transfer-Encoding"] = "chunked"
     async = env['java.servlet_request'].start_async
 

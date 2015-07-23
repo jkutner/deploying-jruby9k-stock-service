@@ -4,7 +4,7 @@ require 'csv'
 module Stocks
 
   ALL_NASDAQ_STOCKS = {
-    "AAPL" => %r{(Apple)},
+    "AAPL" => %r{Apple},
     "MSFT" => %r{Microsoft},
     "MU" => %r{Micron Technology},
     "INTC" => %r{Intel},
@@ -33,8 +33,12 @@ module Stocks
     quotes.each do |quote|
       symbol = quote[0]
       pattern = ALL_NASDAQ_STOCKS[symbol]
-      text.gsub!(pattern, '\1' + " (#{quote})")
+      text.gsub!(pattern, format_stock(quote))
     end
     text
+  end
+
+  def self.format_stock(quote)
+    "<div class='stock' data-symbol='#{quote[0]}' data-day-high='#{quote[2]}'>#{quote[1]}</div>"
   end
 end
