@@ -4,7 +4,8 @@ source "https://rubygems.org"
 
 gem 'rack'
 gem 'sinatra'
+gem 'json'
 
 group :development do
-  gem 'warbler'
+  gem 'warbler', '2.0.0.dev'
 end
