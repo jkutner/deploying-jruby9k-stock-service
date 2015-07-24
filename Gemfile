@@ -6,5 +6,5 @@ gem 'rack'
 gem 'sinatra'
 
 group :development do
-  gem 'warbler', '2.0.0.dev'
+  gem 'warbler', '2.0.0.pre2'
 end
