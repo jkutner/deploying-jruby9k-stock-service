@@ -12,21 +12,20 @@ class App < Sinatra::Base
     # END:async
 
     # START:thread
+    text = request.body.read.to_s
     Thread.new do
       sleep 5
-      text = request.body.read.to_s
       stocks = Stocks.parse_for_stocks(text)
       quotes = Stocks.get_quotes(stocks)
       new_text = Stocks.sub_quotes(text, quotes)
-
-      async.response.output_stream.println("End")
+      async.response.output_stream.println("#{new_text}</div>")
       async.complete
     end
     # END:thread
 
     # START:start
-    "Start"
-    # START:start
+    "<div>"
+    # END:start
   end
   # END:stockify
 end

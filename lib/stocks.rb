@@ -39,6 +39,6 @@ module Stocks
   end
 
   def self.format_stock(quote)
-    "<div class='stock' data-symbol='#{quote[0]}' data-day-high='#{quote[2]}'>#{quote[1]}</div>"
+    "<span class='stock' data-symbol='#{quote[0]}' data-day-high='#{quote[2]}'>#{quote[1]}</span>"
   end
 end
