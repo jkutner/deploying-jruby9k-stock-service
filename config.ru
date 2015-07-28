@@ -35,9 +35,7 @@ class App < Sinatra::Base
 end
 
 # START:thread_pool
-thread_pool = JRuby::Executors.new_cached_thread_pool
-App.set :thread_pool, thread_pool
-# at_exit { thread_pool.shutdown }
+App.set :thread_pool, JRuby::Executors.new_cached_thread_pool
 # END:thread_pool
 
 run App
