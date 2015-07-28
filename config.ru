@@ -25,7 +25,7 @@ class App < Sinatra::Base
         async.complete
       end
     end
-    # END:thread
+    # END:thread_submit
 
     # START:main_thread
     puts "Thread(main) : #{Thread.current.object_id}"
