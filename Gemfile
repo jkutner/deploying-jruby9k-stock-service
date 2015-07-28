@@ -1,9 +1,11 @@
 source "https://rubygems.org"
 
-#ruby "1.9.3", engine: "jruby", engine_version: "1.7.18"
-
 gem 'rack'
 gem 'sinatra'
+
+# START:jexecutors
+gem 'jruby-executors'
+# END:jexecutors
 
 # START:warbler
 group :development do
