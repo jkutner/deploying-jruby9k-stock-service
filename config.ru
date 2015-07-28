@@ -4,6 +4,7 @@ Bundler.require
 require 'lib/stocks'
 
 class App < Sinatra::Base
+
   # START:stockify
   post '/stockify' do
     # START:async
@@ -14,18 +15,21 @@ class App < Sinatra::Base
     # START:thread
     text = request.body.read.to_s
     Thread.new do
-      sleep 5
-      stocks = Stocks.parse_for_stocks(text)
-      quotes = Stocks.get_quotes(stocks)
-      new_text = Stocks.sub_quotes(text, quotes)
-      async.response.output_stream.println("#{new_text}</div>")
-      async.complete
+      begin
+        puts "Thread(async): #{Thread.current.object_id}"
+        stocks = Stocks.parse_for_stocks(text)
+        quotes = Stocks.get_quotes(stocks)
+        new_text = Stocks.sub_quotes(text, quotes)
+        async.response.output_stream.println(new_text)
+      ensure
+        async.complete
+      end
     end
     # END:thread
 
-    # START:start
-    "<div>"
-    # END:start
+    # START:main_thread
+    puts "Thread(main) : #{Thread.current.object_id}"
+    # END:main_thread
   end
   # END:stockify
 end
