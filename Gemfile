@@ -3,9 +3,9 @@ source "https://rubygems.org"
 gem 'rack'
 gem 'sinatra'
 
-# START:jexecutors
-gem 'jruby-executors'
-# END:jexecutors
+# START:concurrent
+gem 'concurrent-ruby', require: 'concurrent'
+# END:concurrent
 
 # START:warbler
 group :development do

@@ -14,7 +14,7 @@ class App < Sinatra::Base
 
     text = request.body.read.to_s
     # START:thread_submit
-    settings.thread_pool.submit do
+    settings.thread_pool.post do
       begin
         puts "Thread(async): #{Thread.current.object_id}"
         stocks = Stocks.parse_for_stocks(text)
@@ -35,7 +35,8 @@ class App < Sinatra::Base
 end
 
 # START:thread_pool
-App.set :thread_pool, JRuby::Executors.new_cached_thread_pool
+App.set :thread_pool,
+  Concurrent::ThreadPoolExecutor.new(max_threads: 100)
 # END:thread_pool
 
 run App
