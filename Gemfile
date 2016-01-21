@@ -9,6 +9,6 @@ gem 'jruby-executors'
 
 # START:warbler
 group :development do
-  gem 'warbler', '2.0.0.pre2'
+  gem 'warbler', '2.0.0.rc2'
 end
 # END:warbler
