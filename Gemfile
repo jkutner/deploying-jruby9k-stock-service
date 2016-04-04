@@ -9,6 +9,6 @@ gem 'concurrent-ruby', require: 'concurrent'
 
 # START:warbler
 group :development do
-  gem 'warbler', '2.0.0.rc2'
+  gem 'warbler', '2.0.0.rc3'
 end
 # END:warbler
