@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    jruby-jars (9.1.1.0)
+    jruby-jars (9.0.5.0)
     jruby-rack (1.1.20)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -28,4 +28,4 @@ DEPENDENCIES
   warbler (= 2.0.1)
 
 BUNDLED WITH
-   1.12.4
+   1.11.2
